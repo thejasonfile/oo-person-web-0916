@@ -3,7 +3,7 @@ require 'pry'
 class Person
 
   attr_accessor :bank_account
-  attr_reader :name, :happiness, :hygiene
+  attr_reader :name
 
   def initialize(name)
     @name = name
@@ -12,12 +12,20 @@ class Person
     @hygiene = 8
   end
 
-  def happiness=(num)
-    @happiness = [[10, num].min, 0].max
+  def happiness=(happiness)
+    @happiness = [[10, happiness].min, 0].max
   end
 
-  def hygiene=(num)
-    @hygiene = [[10, num].min, 0].max
+  def happiness
+    @happiness = [[10, @happiness].min, 0].max
+  end
+
+  def hygiene=(hygiene)
+    @hygiene = [[10, hygiene].min, 0].max
+  end
+
+  def hygiene
+    @hygiene = [[10, @hygiene].min, 0].max
   end
 
   def happy?
@@ -34,11 +42,12 @@ class Person
   end
 
   def take_bath
-    new_hygiene = (@hygiene += 4)
-    hygiene = new_hygiene
+    @hygiene += 4
+    hygiene=@hygiene
     "♪ Rub-a-dub just relaxing in the tub ♫"
   end
 
+binding.pry
 end
 
 
