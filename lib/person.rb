@@ -34,7 +34,8 @@ class Person
   end
 
   def take_bath
-    @hygiene += 4
+    new_hygiene = (@hygiene += 4)
+    hygiene = new_hygiene
     "♪ Rub-a-dub just relaxing in the tub ♫"
   end
 
